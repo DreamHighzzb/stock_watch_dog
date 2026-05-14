@@ -1,0 +1,40 @@
+{
+  "stocks": {
+    "600977": {
+      "alert_price_up": null,
+      "alert_price_down": null
+    },
+    "002451": {
+      "alert_price_up": null,
+      "alert_price_down": null
+    },
+    "601929": {
+      "alert_price_up": null,
+      "alert_price_down": null
+    },
+    "002716": {
+      "alert_price_up": null,
+      "alert_price_down": null
+    },
+    "sz": {
+      "alert_price_up": null,
+      "alert_price_down": null
+    },
+    "sh": {
+      "alert_price_up": null,
+      "alert_price_down": null
+    },
+    "002115": {
+      "alert_price_up": null,
+      "alert_price_down": null
+    }
+  },
+  "refresh_interval": 1,
+  "selfown": [
+    "002115",
+    "600977",
+    "002451",
+    "601929",
+    "002716"
+  ]
+}
