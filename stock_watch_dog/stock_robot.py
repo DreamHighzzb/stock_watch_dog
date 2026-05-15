@@ -485,13 +485,20 @@ class StockMonitorApp:
             current_price = info.get("price", 0)
             alert_price_up = stocks_config.get(code, {}).get("alert_price_up")
             alert_price_down = stocks_config.get(code, {}).get("alert_price_down")
+            codeStr = str(code)
             if alert_price_up is not None:
                 if current_price >= alert_price_up:
                     self._show_alert(code, info.get("name", ""), current_price, alert_price_up)
+                elif codeStr in SHOW_NOTICE and alert_price_up in SHOW_NOTICE[codeStr]:
+                    self._show_alert(code, info.get("name", ""), current_price, alert_price_up)
+                    SHOW_NOTICE[codeStr].remove(alert_price_up)
 
             if alert_price_down is not None:
                 if current_price <= alert_price_down:
                     self._show_alert(code, info.get("name", ""), current_price, alert_price_down)
+                elif codeStr in SHOW_NOTICE and alert_price_down in SHOW_NOTICE[codeStr]:
+                    self._show_alert(code, info.get("name", ""), current_price, alert_price_down)
+                    SHOW_NOTICE[codeStr].remove(alert_price_down)
 
     def _show_alert(self, code, name, price, alert_price):
         codeStr = str(code)
