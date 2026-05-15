@@ -345,6 +345,8 @@ class StockMonitorApp:
             messagebox.showinfo("提示", f"股票 {code} 不在列表中")
             return
         del self.config["stocks"][code]
+        if "selfown" in self.config and code in self.config["selfown"]:
+            self.config["selfown"].remove(code)
         save_config(self.config)
 
         # 清空输入框
