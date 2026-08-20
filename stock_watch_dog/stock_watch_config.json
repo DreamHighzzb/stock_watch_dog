@@ -1,0 +1,148 @@
+{
+    "自选": [
+        {
+            "code": "515050",
+            "name": "通信ETF华夏",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "399006",
+            "name": "创业板指",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "399001",
+            "name": "深证成指",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "159792",
+            "name": "互联网",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "512050",
+            "name": "A500ETF华夏",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "002261",
+            "name": "拓维信息",
+            "up_warning": null,
+            "down_warning": 26.5,
+            "buy_price": null
+        },
+        {
+            "code": "688825",
+            "name": "长鑫科技",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "159327",
+            "name": "半导材料",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "588200",
+            "name": "科创芯片ETF嘉实",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "159310",
+            "name": "芯片产业",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "603778",
+            "name": "国晟科技",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        },
+        {
+            "code": "563530",
+            "name": "卫星ETF易方达",
+            "up_warning": null,
+            "down_warning": null,
+            "buy_price": null
+        }
+    ],
+    "持仓": [
+        {
+            "code": "600578",
+            "name": "京能电力",
+            "up_warning": 5.9,
+            "down_warning": 5.7,
+            "buy_price": 5.868
+        },
+        {
+            "code": "002115",
+            "name": "三维通信",
+            "up_warning": 11.26,
+            "down_warning": 9.5,
+            "buy_price": 11.258
+        },
+        {
+            "code": "600236",
+            "name": "桂冠电力",
+            "up_warning": 10.8,
+            "down_warning": 10.0,
+            "buy_price": 10.787
+        }
+    ],
+    "关注": [
+        {
+            "code": "002648",
+            "name": "卫星化学",
+            "up_warning": 26.0,
+            "down_warning": 23.5,
+            "buy_price": null
+        },
+        {
+            "code": "600667",
+            "name": "太极实业",
+            "up_warning": null,
+            "down_warning": 21.0,
+            "buy_price": null
+        },
+        {
+            "code": "000021",
+            "name": "深科技",
+            "up_warning": null,
+            "down_warning": 39.0,
+            "buy_price": null
+        },
+        {
+            "code": "002185",
+            "name": "华天科技",
+            "up_warning": null,
+            "down_warning": 17.0,
+            "buy_price": null
+        },
+        {
+            "code": "002354",
+            "name": "天娱数科",
+            "up_warning": null,
+            "down_warning": 8.22,
+            "buy_price": null
+        }
+    ]
+}
