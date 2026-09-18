@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="7qu9c2V0rCQTyyhFWIBBZG">
+<head data-page-node-id="EkFik8wVlxt0q07mlSxHsf">
+<meta charset="UTF-8" data-page-node-id="HuGqoBCPZfxasV1fABF4pD">
+<meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="Oprwl0pIzSQeQAT3K7UXG7">
+<title>stock-radar</title>
+<link rel="stylesheet" href="style.css" data-page-node-id="7FAHTTC0zzxihsRlC2JfRZ">
+</head>
+<body data-page-node-id="vUq5IdLvEMLT4vkIGcxwOR">
+
+<!-- ============ 登录 / 注册 遮罩 ============ -->
+<div id="authOverlay" class="auth-overlay" data-page-node-id="fvQX4SfOb65Cngm4ZSfJQ5">
+  <div class="auth-card" data-page-node-id="eEBIjZUdBrvCk63944Rd5i">
+    <h2 class="auth-title" data-page-node-id="vlgqkZ0SdGNc43W7HmbMOK">📈 stock-radar 股票雷达</h2>
+    <div class="auth-sub" id="authModeText" data-page-node-id="Fd0a5KmQu6xDc0YM0WPEbm">登录你的账户</div>
+
+    <label class="auth-label" data-page-node-id="iQ0PZTDzqh9NADrR9aQeAl">用户名
+      <input id="authUser" type="text" autocomplete="username" placeholder="至少 2 个字符" data-page-node-id="K2wFNNcuoInMETDD9ZMo2U">
+    </label>
+    <label class="auth-label" data-page-node-id="txRF3eUqpFaGnolW8FwtLw">密码
+      <input id="authPass" type="password" autocomplete="current-password" placeholder="至少 6 位" data-page-node-id="AoV46Xy1LfWbYnMM76wlXQ">
+    </label>
+
+    <div id="authError" class="auth-error hidden" data-page-node-id="4KKpH9dHAucMIZx8tGa7no"></div>
+
+    <button class="btn blue auth-btn" id="authSubmit" data-page-node-id="BwUBItxDUzmkSL1CmLDL5y">登 录</button>
+    <div class="auth-toggle" data-page-node-id="0JlCce6Cf5MzfTMA8PKV82">
+      <span id="authSwitchText" data-page-node-id="VwHpJsGmuKmrXklo4OYjRD">还没有账号？</span>
+      <a href="javascript:void(0)" id="authSwitch" data-page-node-id="PDwVdyYu9F0Yp94A1ieFYY">去注册</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 顶部用户栏 ============ -->
+<div class="userbar hidden" id="userbar" data-page-node-id="9E8vangZowDwgQ6XQg3KIq">
+  <span class="userbar-name" id="userName" data-page-node-id="mQrfZWPupiU9m5ITMcfc2R">-</span>
+  <button class="btn gray" id="changePwBtn" data-page-node-id="terfxGuw3yBFKZ37iEocl2">修改密码</button>
+  <button class="btn gray" id="logoutBtn" data-page-node-id="uqEzDjssOxhR6LBSFP1MNu">退出登录</button>
+</div>
+
+<div class="toolbar" data-page-node-id="GgD2gStc9FZf0mMafkjvWV">
+  <label data-page-node-id="XYRMEpOKq2nrK9J4QD2CqD">股票代码: <input id="codeInput" type="text" size="9" data-page-node-id="mFqDvpKXfRtNOQnzbFhlDr"></label>
+  <label data-page-node-id="ace4xHWagwPzrSb3vgE7QZ">预警涨价: <input id="upInput" type="text" size="6" data-page-node-id="PsmbrkzdnZekoEE1dvlpOc">元</label>
+  <label data-page-node-id="fXka9e70olq3dHIePlx2n1">预警跌价: <input id="downInput" type="text" size="6" data-page-node-id="rXuUTg7DOA61l3YBWU7pMS">元</label>
+  <label data-page-node-id="we7PLITPvugsi8eFGXsJIn">成本价: <input id="buyInput" type="text" size="6" data-page-node-id="eOPAwBDnOoErs8CrRqm3AC">元</label>
+  <label data-page-node-id="sharesToolbar">股数: <input id="sharesInput" type="text" size="6" data-page-node-id="gK3mNpQrStuVwXyZ1aBc2d">股</label>
+  <label data-page-node-id="jt8n3COjafhEHTSh5Z94EC">添加到页签: <select id="targetTabSelect" data-page-node-id="RbVJCYwD7CuBM5zpRActsd"></select></label>
+  <button class="btn blue" id="addStockBtn" data-page-node-id="RqSSvhOWj1hDCzHEkBrEGo">添加股票</button>
+  <button class="btn red" id="delStockBtn" data-page-node-id="TBcZoae1AZopl5xaYUAjKP">删除股票</button>
+  <button class="btn blue" id="addTabBtn" data-page-node-id="Yzz6ReEEbjeKfJ9V70EOuK">新增页签</button>
+  <button class="btn red" id="delTabBtn" data-page-node-id="8BECqn631V4nX8U5jYE36L">删除页签</button>
+  <span class="clock" id="clock" data-page-node-id="WwP8RVcYHJKGjbWlRKMVH9"></span>
+</div>
+
+<div class="sortbar" data-page-node-id="E3722SO5Y0Wy8dnUxYBQaA">
+  <span data-page-node-id="zFkFTXxs8TqI8aDMzuyjg3">排序方式:</span>
+  <label data-page-node-id="fdhi8czMGFuTVqvgJueHOG"><input type="radio" name="sort" value="none" checked data-page-node-id="lWnRqFodYztuulJmiaasft"> 默认</label>
+  <label data-page-node-id="4dYlBicKigoWFYWtScNZlA"><input type="radio" name="sort" value="price_desc" data-page-node-id="v6HuHWKbeaAMwpD59VpeGQ"> 价格↓</label>
+  <label data-page-node-id="hjRuavj5VFinDC3S2cYlR7"><input type="radio" name="sort" value="price_asc" data-page-node-id="QofWFv1wiPLWIuRJ7eBEtt"> 价格↑</label>
+  <label data-page-node-id="9qqrf9O7tGGEm0HEBIYLNE"><input type="radio" name="sort" value="change_desc" data-page-node-id="c5YxHVn6wuhWDifFAqsNxb"> 涨幅↓</label>
+  <label data-page-node-id="2AK2e7QY8pwV7DA5cp15R9"><input type="radio" name="sort" value="change_asc" data-page-node-id="GGRtGlNh64Efa1Kw1Db6im"> 涨幅↑</label>
+  <label class="compact-toggle" data-page-node-id="c0MpCt7TgWq1sVn4Jd8lZx">
+    <input type="checkbox" id="compactToggle" data-page-node-id="hR2nBqXk5vLdPw9yTm3sQe"> 简化显示
+  </label>
+</div>
+
+<div id="tabs" class="tabs" data-page-node-id="3K8P2HgDSoRpzzBWZbO3OY"></div>
+
+<div class="table-wrap" data-page-node-id="eLnLvGOZOejXLe6J2Ia5DU">
+  <table id="stockTable" data-page-node-id="kfySwbBcYDEbInECBYkUc0">
+    <thead data-page-node-id="lE0bk2MdmyEWzbzcAD73Hq">
+      <tr data-page-node-id="b0Q87XwkB3IW6L7KxVL7MO">
+        <th data-col="idx" data-page-node-id="X6zrToRWegCGgCYkJWtRrB">序号</th>
+        <th data-col="name" data-page-node-id="eWeR0iQWs91UA14jKs1Y2v">名称</th>
+        <th data-col="change" data-page-node-id="cry4bBQd7H6RxQI90S2fNb">涨跌</th>
+        <th data-col="price" data-page-node-id="XPlZH6cU3K2fN9OvvKDoL3">现价</th>
+        <th data-col="buy" data-page-node-id="WAAymI44QYXHKtvzeM06xh">成本价</th>
+        <th data-col="shares" data-page-node-id="qLmNbVcXwYzA1bC2dE3fG4h">股数</th>
+        <th data-col="low" data-page-node-id="t1ajIH07mNLoZYFPX0oJMJ">低价</th>
+        <th data-col="high" data-page-node-id="1pVmGMaf9HH4aYQDTDaYZM">高价</th>
+        <th data-col="pre_close" data-page-node-id="aGnAg085rwy5hC4MGrBmm7">昨价</th>
+        <th data-col="up_warning" data-page-node-id="ZTVXwgFWb9VscN7FgWc7ub">预警涨价</th>
+        <th data-col="down_warning" data-page-node-id="Pv0FUYKQmuAAUQ7X84NdZe">预警跌价</th>
+      </tr>
+    </thead>
+    <tbody data-page-node-id="2G6gFAqkXTmj9RFwELFCuI"></tbody>
+  </table>
+</div>
+
+<!-- 持仓当天总盈亏汇总条 -->
+<div id="pnlSummary" class="pnl-summary" data-page-node-id="pnlSummaryBar"></div>
+
+<!-- 预警弹窗容器 -->
+<div id="alertContainer" class="alert-container" data-page-node-id="ohD1Mw5roiY4BKCgFfRov0"></div>
+
+<!-- 轻提示容器 -->
+<div id="toastContainer" class="toast-container" data-page-node-id="oVEMle5q9FzbYDO1qlVnse"></div>
+
+<!-- 编辑对话框 -->
+<div id="editDialog" class="dialog-overlay hidden" data-page-node-id="xuKFkGD0uLhSE8O0uDBIEr">
+  <div class="dialog" data-page-node-id="a60wcJLyto2iJth9yAO1eZ">
+    <h3 id="editTitle" data-page-node-id="hbVfQjsGD3dnpnFlqQX1TT">修改股票信息</h3>
+    <label data-page-node-id="tnnXkeRJFbfglxpkTOl9xB">成本价（元）: <input id="editBuy" type="text" data-page-node-id="Fwzm54VbNf3vEm03gS9hmW"></label>
+    <label data-page-node-id="sharesEdit">股数（股，留空则不修改）: <input id="editShares" type="text" data-page-node-id="hJ4kL5mN6pQ7rS8tU9vW0x"></label>
+    <label data-page-node-id="2SW8f4E3TJYButk6EV23EZ">预警涨价（元）: <input id="editUp" type="text" data-page-node-id="SdlyxGk8tkw7Sg1xVSYI9E"></label>
+    <label data-page-node-id="Lf6AdMgODaAyIJ6uWRKof9">预警跌价（元）: <input id="editDown" type="text" data-page-node-id="7WwBJzaZLHR4Qi0DouQltp"></label>
+    <div class="dialog-buttons" data-page-node-id="rSVlMTAGNHJfB7RlxNUE6N">
+      <button class="btn blue" id="editSave" data-page-node-id="TZASLo1FiPIkPtabBLReBx">保存</button>
+      <button class="btn gray" id="editCancel" data-page-node-id="I6hm49ZwwkwAuL6KjoxCS1">取消</button>
+    </div>
+  </div>
+</div>
+
+<!-- 新增页签对话框 -->
+<div id="tabDialog" class="dialog-overlay hidden" data-page-node-id="0oMCCWhV7iQCa6CwHhSlHv">
+  <div class="dialog" data-page-node-id="DkXMJu2A1qtPBEDX98ey1f">
+    <h3 data-page-node-id="mWLLUjSXeYkdTIvldUprQl">新增页签</h3>
+    <label data-page-node-id="uUfEWLNtMPddhbpBnMBaqR">页签名称: <input id="newTabName" type="text" data-page-node-id="QuHBZaTBSmusUrSVIaNCSW"></label>
+    <div class="dialog-buttons" data-page-node-id="ZC9CuP2A4QvjwRAN9pdwbN">
+      <button class="btn blue" id="tabSave" data-page-node-id="Ak1OwFAy5XzGqCHg8arx66">确定</button>
+      <button class="btn gray" id="tabCancel" data-page-node-id="eTXS9cZN0ziNaqQsoMdFPV">取消</button>
+    </div>
+  </div>
+</div>
+
+<!-- 修改密码对话框 -->
+<div id="changePwDialog" class="dialog-overlay hidden" data-page-node-id="LO5AQIOmbNeELMBDF1XlpS">
+  <div class="dialog" data-page-node-id="bF6Q0UToFAbd1PesAuciDd">
+    <h3 data-page-node-id="AOwd8FcP6PbiU4VrQaFIvi">修改密码</h3>
+    <label data-page-node-id="ndxLCyTPimcV9sK6YlWAEC">原密码: <input id="oldPw" type="password" data-page-node-id="63ROgQGx1eRVodtCm2Wa5U"></label>
+    <label data-page-node-id="klpm2rnwoSHBvnSbRzh0wu">新密码（至少 6 位）: <input id="newPw" type="password" data-page-node-id="BVw2LH7RbJZTPdp5IWvUho"></label>
+    <div id="changePwError" class="auth-error hidden" data-page-node-id="s1IXV7FMI95mxCzS74asLB"></div>
+    <div class="dialog-buttons" data-page-node-id="3K7bJz5TAW89jVnVH8lhMU">
+      <button class="btn blue" id="changePwSave" data-page-node-id="lLDyjkiF0rsLNHgMm8DRtE">保存</button>
+      <button class="btn gray" id="changePwCancel" data-page-node-id="xioX1VG5mAIh72jZ9hzFQ0">取消</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
