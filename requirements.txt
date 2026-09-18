@@ -1,0 +1,8 @@
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=1.10.0
+tushare>=1.2.89
+pymysql>=1.1.0
+# 说明：默认用 Python 标准库 sqlite3（零依赖）；
+# 配置 db_config.py 启用 MySQL 后，数据库层自动切换到 pymysql 连接 127.0.0.1 上的 game 库。
+# 密码哈希用 hashlib/pbkdf2，零额外依赖。
